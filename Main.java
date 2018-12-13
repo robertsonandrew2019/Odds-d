@@ -12,7 +12,8 @@ public class Main {
             int num = rand.nextInt(6) + 1;
             if (num % 2 == 0) {
                 posCount++;
-            } else {
+            } 
+            else {
                 negCount++;
             }
         }
@@ -27,7 +28,8 @@ public class Main {
             int num = rand.nextInt(10) + 1;
             if ((num > 5) || (num % 2 == 0)) {
                 posCount++;
-            } else {
+            } 
+            else {
                 negCount++;
             }
         }
