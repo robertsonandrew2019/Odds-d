@@ -90,7 +90,5 @@ public class Main {
         }
         proportionPos = posCount / 100000.0;
         System.out.printf("\nScenario 5\nExpected Outcome: %f\nCount of True: %d\nCount of False: %d\nCondition Reached: %f\n", expectation, posCount, negCount, proportionPos);
-
     }
-
 }
