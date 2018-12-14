@@ -1,26 +1,31 @@
 import java.util.Random;
-
 public class Main {
-
+    public static int posCount = 0;
+    public static int negCount = 0;
+    public static Random rand = new Random();
+    public static double expectation;
+    public static double proportionPos;
     public static void main(String[] args) {
-        //Scenario 1 - 6-sided die evens
-        Random rand = new Random();
-        int posCount = 0;
-        int negCount = 0;
-        double expectation = 0.5;
+        scenario1(); //Scenario 1 - 6-sided die evens
+        scenario2(); //Scenario 2 - 10-sided die even or > 5
+        scenario3(); //Scenario 3 - 6-side die even then odd
+        scenario4(); //Scenario 4 - 6-sided die 1 or 2 then 3 or 4 then a 5 or 6
+        scenario5(); //Scenario 5 - 6-sided die 1 != die 2 != die 3 != die 4
+    }
+    public static void scenario1() {
+        expectation = 0.5;
         for (int i = 0; i < 100000; i++) {
             int num = rand.nextInt(6) + 1;
             if (num % 2 == 0) {
                 posCount++;
-            } 
-            else {
+            } else {
                 negCount++;
             }
         }
-        double proportionPos = posCount / 100000.0;
+        proportionPos = posCount / 100000.0;
         System.out.printf("\nScenario 1\nExpected Outcome: %f\nCount of True: %d\nCount of False: %d\nCondition Reached: %f\n", expectation, posCount, negCount, proportionPos);
-
-        //Scenario 2 - 10-sided die even or > 5
+    }
+    public static void scenario2() {
         posCount = 0;
         negCount = 0;
         expectation = (5 / 10.0) + (5 / 10.0) - (3 / 10.0);
@@ -28,15 +33,14 @@ public class Main {
             int num = rand.nextInt(10) + 1;
             if ((num > 5) || (num % 2 == 0)) {
                 posCount++;
-            } 
-            else {
+            } else {
                 negCount++;
             }
         }
         proportionPos = posCount / 100000.0;
         System.out.printf("\nScenario 2\nExpected Outcome: %f\nCount of True: %d\nCount of False: %d\nCondition Reached: %f\n", expectation, posCount, negCount, proportionPos);
-
-        //Scenario 3 - 6-side die even then odd
+    }
+    public static void scenario3() {
         posCount = 0;
         negCount = 0;
         expectation = 0.5 * 0.5;
@@ -52,7 +56,9 @@ public class Main {
         }
         proportionPos = posCount / 100000.0;
         System.out.printf("\nScenario 3\nExpected Outcome: %f\nCount of True: %d\nCount of False: %d\nCondition Reached: %f\n", expectation, posCount, negCount, proportionPos);
+    }
 
+    public static void scenario4() {
         //Scenario 4 - 6-sided die 1 or 2 then 3 or 4 then a 5 or 6
         posCount = 0;
         negCount = 0;
@@ -70,8 +76,8 @@ public class Main {
         }
         proportionPos = posCount / 100000.0;
         System.out.printf("\nScenario 4\nExpected Outcome: %f\nCount of True: %d\nCount of False: %d\nCondition Reached: %f\n", expectation, posCount, negCount, proportionPos);
-
-        //Scenario 5 - 6-sided die 1 != die 2 != die 3 != die 4
+    }
+    public static void scenario5() {
         posCount = 0;
         negCount = 0;
         expectation = (1.0) * (5 / 6.0) * (2 / 3.0) * (1 / 2.0);
